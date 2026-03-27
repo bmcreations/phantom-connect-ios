@@ -2,7 +2,7 @@
 import PackageDescription
 
 let version = "1.0.0"
-let checksum = "b482f83d46e01be7fb8fbda4956717d55a1da928ad998c9e9685b4a1577611c3"
+let checksum = "b8a8ae573d7d3bf28d516f6d3f4d16241c5345ba0a22d6649ca65efb2152cd27"
 
 let package = Package(
     name: "PhantomConnectSDK",
