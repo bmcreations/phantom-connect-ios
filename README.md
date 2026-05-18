@@ -18,7 +18,6 @@ import PhantomConnectSDK
 // Create the client
 let phantom = PhantomClient(
     appId: "your-app-id",
-    redirectScheme: "myapp",
     redirectUri: "myapp://phantom-auth-callback"
 )
 
@@ -52,12 +51,11 @@ import PhantomConnectSDK
 let connector = PhantomWalletConnector(
     deeplinkLauncher: createDeeplinkLauncher(),
     appUrl: "https://your-app.example.com",
-    callbackScheme: "myapp"
+    redirectUrl: "myapp://phantom-wallet-callback"
 )
 
 let phantom = PhantomClient(
     appId: "your-app-id",
-    redirectScheme: "myapp",
     redirectUri: "myapp://phantom-auth-callback",
     connectors: [connector]
 )
@@ -99,11 +97,11 @@ let result = await phantom.connect(connector: connector)
 
 ### Connector Parameters
 
-| Parameter          | Description                                                                                                                     |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| `deeplinkLauncher` | `createDeeplinkLauncher()` -- handles opening Phantom and receiving callbacks                                                   |
-| `appUrl`           | Your app's HTTPS URL, used by Phantom to identify the dapp. Must be a valid URL, not a custom scheme.                           |
-| `callbackScheme`   | URL scheme for deeplink callbacks (e.g. `"myapp"`). Phantom sends results back to `{callbackScheme}://phantom-wallet-callback`. |
+| Parameter          | Description                                                                                                                                                            |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `deeplinkLauncher` | `createDeeplinkLauncher()` -- handles opening Phantom and receiving callbacks                                                                                          |
+| `appUrl`           | Your app's HTTPS URL, used by Phantom to identify the dapp. Must be a valid URL, not a custom scheme.                                                                  |
+| `redirectUrl`      | Full redirect URL for deeplink callbacks (e.g. `"myapp://phantom-wallet-callback"` for custom schemes, or `"https://yourapp.com/callback"` for HTTPS universal links). |
 
 ## API
 
@@ -156,7 +154,6 @@ To disable persistence (e.g. for kiosk apps or shared devices):
 ```swift
 let phantom = PhantomClient(
     appId: "your-app-id",
-    redirectScheme: "myapp",
     redirectUri: "myapp://phantom-auth-callback",
     persistSession: false
 )
@@ -183,7 +180,6 @@ phantom.theme = .custom(
 ```swift
 let phantom = PhantomClient(
     appId: "your-app-id",
-    redirectScheme: "myapp",
     redirectUri: "myapp://phantom-auth-callback",
     logger: { level, tag, message in
         print("[\(level)] \(tag): \(message)")

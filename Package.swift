@@ -1,8 +1,8 @@
 // swift-tools-version: 5.9
 import PackageDescription
 
-let version = "2.0.2"
-let checksum = "5f9e39be06c913e3d972cf46acdc29cf4fc97bf9dad3d02c0925bbfecfc177bc"
+let version = "2.0.2-1.0.0"
+let checksum = "9c3c8bcb379b1816b862e4d7a4f0a65e5fd98d2ff1899ad29754d2d3b46da762"
 
 let package = Package(
     name: "PhantomConnectSDK",
